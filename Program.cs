@@ -21,19 +21,24 @@
                 {
                     case 1:
                         Console.WriteLine("Adding laptop...");
+                        Console.WriteLine("-------------------------");
                         break;
                     case 2:
                         Console.WriteLine("Displaying laptop");
+                        Console.WriteLine("-------------------------");
                         break;
                     case 3:
                         Console.WriteLine("Recommeding laptop...");
+                        Console.WriteLine("-------------------------");
                         break;
                     case 4:
                         Console.WriteLine("Removing laptop");
+                        Console.WriteLine("-------------------------");
                         break;
                     case 5:
                         Console.WriteLine("Exiting...");
                         Console.WriteLine("Thank you for using");
+                        Console.WriteLine("-------------------------");
                         loop = false;
                         break;
                     default:
