@@ -6,6 +6,7 @@
         {
             Console.WriteLine("Hello, World!");
             Console.WriteLine("Hello GitHub");
+            Console.WriteLine("Another test, hi Gaile");
         }
     }
 }
