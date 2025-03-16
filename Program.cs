@@ -27,13 +27,13 @@ namespace LaptopRecommedationSystem
                         AddLaptop();
                         break;
                     case 2:
-                       
+                        DisplayLaptop();
                         break;
                     case 3:
-                        
+                        UpdateLaptop();
                         break;
                     case 4:
-                        
+                        RemoveLaptop();
                         break;
                     case 5:
                         Console.WriteLine("Thank you for using");
@@ -101,14 +101,11 @@ namespace LaptopRecommedationSystem
                     found = false;
                 }
             }
-
         }
         static void UpdateLaptop() // update laptop
         {
             Console.Write("Enter laptop model to update: ");
             string model = Console.ReadLine();
-            // var LaptopUpdate = laptops.Find(x => x.Model == model);
-            // lambda expression
             Laptop LaptopUpdate = null;
             foreach(Laptop UpdateLaptop in laptops)
             {
