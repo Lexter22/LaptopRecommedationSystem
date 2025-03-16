@@ -24,25 +24,19 @@ namespace LaptopRecommedationSystem
                 switch (ProcessChoice)
                 {
                     case 1:
-
-                        Console.WriteLine(AddLaptop());
-                        Console.WriteLine("-------------------------");
+                        AddLaptop();
                         break;
                     case 2:
-                        DisplayLaptop();
-                        Console.WriteLine("-------------------------");
+                       
                         break;
                     case 3:
-                        UpdateLaptop();
-                        Console.WriteLine("-------------------------");
+                        
                         break;
                     case 4:
-                        Console.WriteLine(RemoveLaptop());
-                        Console.WriteLine("-------------------------");
+                        
                         break;
                     case 5:
                         Console.WriteLine("Thank you for using");
-                        Console.WriteLine("-------------------------");
                         loop = false;
                         break;                    
                     default:
@@ -52,7 +46,7 @@ namespace LaptopRecommedationSystem
             }
 
         }
-        static string AddLaptop() // add laptop method
+        static void AddLaptop() // add laptop method
         {
             Console.Write("Enter brand: ");
             string brand = Console.ReadLine();
@@ -68,43 +62,62 @@ namespace LaptopRecommedationSystem
             double price = Convert.ToDouble(Console.ReadLine());
 
             laptops.Add(new Laptop(brand, model, processor, ram, storage, price));
-            return "Laptop added";
+
+            Console.WriteLine("Laptop Added");
+            Console.WriteLine("-------------------------");
         }
         static void DisplayLaptop() // display laptop method
         {
             foreach (Laptop laptop in laptops)
             {
-                Console.WriteLine("Brand: " + laptop.Brand);
-                Console.WriteLine("Model: " + laptop.Model);
-                Console.WriteLine("Processor: " + laptop.Processor);
-                Console.WriteLine("Ram: " + laptop.Ram);
-                Console.WriteLine("Storage: " + laptop.Storage);
-                Console.WriteLine("Price: " + laptop.Price);
+                Console.WriteLine($"Brand: {laptop.Brand}");
+                Console.WriteLine($"Model: {laptop.Model}");
+                Console.WriteLine($"Processor: {laptop.Processor}");
+                Console.WriteLine($"Ram: {laptop.Ram}");
+                Console.WriteLine($"Storage: {laptop.Storage}");
+                Console.WriteLine($"Price: {laptop.Price}");
                 Console.WriteLine("-------------------------");
             }
             
         }
-        static string RemoveLaptop() // remove laptop 
+        static void RemoveLaptop() // remove laptop 
         {
             Console.Write("Enter laptop model to delete: ");
             string model = Console.ReadLine();
-            var LaptopRemove = laptops.Find(x => x.Model == model); // lambda expression ito find the laptop model
-            if (LaptopRemove != null)
+            bool found = false;
+            foreach (Laptop RemoveLaptop in laptops)
             {
-                laptops.Remove(LaptopRemove);
-                return "Laptop removed";
+                if (RemoveLaptop.Model == model)
+                {
+                    laptops.Remove(RemoveLaptop);
+                    Console.WriteLine("Laptop Removed");
+                    Console.WriteLine("-------------------------");
+                    found = true;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Laptop Model not found");
+                    found = false;
+                }
             }
-            else
-            {
-                return "Laptop not found";
-            }
+
         }
         static void UpdateLaptop() // update laptop
         {
             Console.Write("Enter laptop model to update: ");
             string model = Console.ReadLine();
-            var LaptopUpdate = laptops.Find(x => x.Model == model);
-           
+            // var LaptopUpdate = laptops.Find(x => x.Model == model);
+            // lambda expression
+            Laptop LaptopUpdate = null;
+            foreach(Laptop UpdateLaptop in laptops)
+            {
+                if (UpdateLaptop.Model == model)
+                {
+                    LaptopUpdate = UpdateLaptop;
+                    break;
+                }
+            }
             if (LaptopUpdate != null)
             {
                 string[] processes = { "1 - Update Brand", "2 - Update Processor", "3 - Update Ram", "4 - Update Storage", "5 - Update Price" };
