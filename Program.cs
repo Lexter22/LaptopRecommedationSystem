@@ -8,7 +8,7 @@ namespace LaptopRecommedationSystem
         public static List<string>LaptopBrands = new List<string>();
         static void Main(string[] args)
         {
-            string[] processes = { "1 - Add Brand", "2 - Display Brands", "3 - Edit", "4 - Recommend Brand", "5 - Exit" };
+            string[] processes = { "1 - Add Brand", "2 - Display Brands", "3 - Recommend Brand", "4 - Remove Brand", "5 - Exit" };
             Boolean loop = true;
             
             while (loop)
@@ -30,10 +30,10 @@ namespace LaptopRecommedationSystem
                         DisplayBrands();
                         break;
                     case 3:
-
+                        RecommendBrand();
                         break;
                     case 4:
-
+                        RemoveBrand();
                         break;
                     case 5:
                         Console.WriteLine("Thank you for using");
@@ -43,25 +43,56 @@ namespace LaptopRecommedationSystem
                         Console.WriteLine("Invalid choice");
                         break;
                 }
-            }
-
+            }        
         }
         // methods
+        // Add
         static string AddBrand()
         {
-            Console.WriteLine("Enter brand name");
+            Console.Write("Enter brand name: ");
             string brand = Console.ReadLine().ToUpper();
             LaptopBrands.Add(brand);
             return brand;
         }
-        static string DisplayBrands()
+        // Display
+        static void DisplayBrands()
         {
             Console.WriteLine("Brands");
-            foreach (string brand in LaptopBrands)
+            int counter = 1;
+            for (int i = 0; i < LaptopBrands.Count; i++)
             {
-                Console.WriteLine(brand);
+                Console.WriteLine($"{counter} - {LaptopBrands[i]} ");
+                counter++;
             }
-            return "";
+
         }
+        // Recommend
+        static string RecommendBrand()
+        {
+            // basta dito matanong mga requirements
+            int purpose;
+            Console.WriteLine("For what use do you want your computer?\n1 - Productivity 2 - Gaming 3 - Basic Browsing");
+            purpose = Convert.ToInt16(Console.ReadLine());
+            switch(purpose)
+            {
+                case 1:
+                    return "ASUS";
+                case 2:
+                    return "ACER";
+                case 3:
+                    return "APPLE";
+                default:
+                    return "HP";
+            }
+            return "HP";
+        }
+        // Remove
+        static string RemoveBrand()
+        {
+            Console.WriteLine("Enter brand name to remove");
+            string brand = Console.ReadLine().ToUpper();
+            LaptopBrands.Remove(brand);
+            return brand;
+        } 
     }
 }
