@@ -4,7 +4,6 @@ namespace LaptopRecommedationSystem
 {
     internal class Program
     {
-        // John Lexter Reyes
         public static List<string>LaptopBrands = new List<string>();
         static void Main(string[] args)
         {
@@ -78,38 +77,63 @@ namespace LaptopRecommedationSystem
             Console.WriteLine();
         }
         // Recommend
-        static string RecommendBrand()
+        static void RecommendBrand()
         {
-            // basta dito matanong mga requirements
-            //Formatter();
-            //int purpose;
-            //Console.WriteLine("For what use do you want your computer?\n1 - Productivity 2 - Gaming 3 - Basic Browsing");
-            //purpose = Convert.ToInt16(Console.ReadLine());
-            //switch(purpose)
-            //{
-            //    case 1:
-            //        return "ASUS";
-            //    case 2:
-            //        return "ACER";
-            //    case 3:
-            //        return "APPLE";
-            //    default:
-            //        return "HP";
-            //}
-            return "HP";
+            Formatter();
+            List<string> RecommendedBrands = new List<string>();
+            Console.WriteLine("For what use do you want your computer?\n1 - Productivity 2 - Gaming 3 - Basic Browsing");
+            int purpose = Convert.ToInt16(Console.ReadLine());
+
+            switch(purpose)
+            {
+                case 1:
+                    if(LaptopBrands.Contains("DELL")) RecommendedBrands.Add("DELL");
+                    if (LaptopBrands.Contains("APPLE")) RecommendedBrands.Add("APPLE");
+                    if (LaptopBrands.Contains("HP")) RecommendedBrands.Add("HP");
+                    break;
+                case 2:
+                    if(LaptopBrands.Contains("ASUS")) RecommendedBrands.Add("ASUS");
+                    if (LaptopBrands.Contains("MSI")) RecommendedBrands.Add("MSI");
+                    if (LaptopBrands.Contains("ACER")) RecommendedBrands.Add("ACER");
+                    break;
+                case 3:
+                    if(LaptopBrands.Contains("LENOVO")) RecommendedBrands.Add("LENOVO");
+                    if (LaptopBrands.Contains("SAMSUNG")) RecommendedBrands.Add("SAMSUNG");
+                    if (LaptopBrands.Contains("MICROSOFT")) RecommendedBrands.Add("MICROSOFT");
+                    break;
+                default:
+                    Console.WriteLine("Please read and try again");
+                    break;
+            }
+            if(RecommendedBrands.Count > 0) // to check if may recommended brands
+            {
+                Console.WriteLine($"Recommended brands: {String.Join("," ,RecommendedBrands)}");
+            }
+            else
+            {
+                Console.WriteLine("No recommended brands");
+            }
         }
         // Remove
         static string RemoveBrand()
         {
             Formatter();
-            Console.WriteLine("Enter brand name to remove");
+            Console.Write("Enter brand name to remove: ");
             string brand = Console.ReadLine().ToUpper();
-            LaptopBrands.Remove(brand);
+            if (LaptopBrands.Contains(brand))
+            {
+                LaptopBrands.Remove(brand);
+                Console.WriteLine($"{brand} removed");
+            }
+            else
+            {
+                Console.WriteLine($"{brand} does not exist");
+            }
             return brand;
         } 
         static void Formatter()
         {
-            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("--------------------------------------------------------------------------------------");
         }
     }
 }
