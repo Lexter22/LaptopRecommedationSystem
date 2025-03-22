@@ -13,12 +13,7 @@ namespace LaptopRecommedationSystem
             while (loop)
             {
                 Formatter();
-                Console.WriteLine("Welcome to Laptop Brand Recommendations!\n" +
-                    "Choose process");
-                foreach (string process in processes)
-                {
-                    Console.WriteLine(process);
-                }
+                DisplayMenu(processes);
                 int ProcessChoice = Convert.ToInt16(Console.ReadLine());
                 
                 switch (ProcessChoice)
@@ -44,6 +39,16 @@ namespace LaptopRecommedationSystem
                         break;
                 }
             }        
+        }
+        // Menu
+        static void DisplayMenu(string[] processes)
+        {
+            Console.WriteLine("Welcome to Laptop Brand Recommendations!\n" +
+                    "Choose process");
+            foreach (string process in processes)
+            {
+                Console.WriteLine(process);
+            }
         }
         // Add
         static string AddBrand()
