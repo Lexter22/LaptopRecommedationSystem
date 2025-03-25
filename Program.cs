@@ -9,7 +9,7 @@ namespace LaptopRecommedationSystem
         {
             string[] processes = { "1 - Add Brand", "2 - Display Brands", "3 - Recommend Brand", "4 - Remove Brand", "5 - Exit" };
             Boolean loop = true;
-            
+            // ui logic
             while (loop)
             {
                 Formatter();
@@ -41,7 +41,7 @@ namespace LaptopRecommedationSystem
             }        
         }
         // Menu
-        static void DisplayMenu(string[] processes)
+        static void DisplayMenu(string[] processes) // ui logic
         {
             Console.WriteLine("Welcome to Laptop Brand Recommendations!\n" +
                     "Choose process");
@@ -51,7 +51,7 @@ namespace LaptopRecommedationSystem
             }
         }
         // Add
-        static string AddBrand()
+        static string AddBrand() // data logic
         {
             Formatter();
             Console.Write("Enter brand name: ");
@@ -70,7 +70,7 @@ namespace LaptopRecommedationSystem
             return brand;
         }
         // Display
-        static void DisplayBrands()
+        static void DisplayBrands() // ui logic
         {
             Formatter();
             Console.WriteLine("Brands");
@@ -82,7 +82,7 @@ namespace LaptopRecommedationSystem
             Console.WriteLine();
         }
         // Recommend
-        static void RecommendBrand()
+        static void RecommendBrand() // business logic
         {
             Formatter();
             List<string> RecommendedBrands = new List<string>();
@@ -120,7 +120,7 @@ namespace LaptopRecommedationSystem
             }
         }
         // Remove
-        static string RemoveBrand()
+        static string RemoveBrand() // business logic
         {
             Formatter();
             Console.Write("Enter brand name to remove: ");
